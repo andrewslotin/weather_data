@@ -1,21 +1,10 @@
+require "weather_data/temperature/base"
+require "weather_data/temperature/celsius"
+require "weather_data/temperature/fahrenheit"
+require "weather_data/temperature/kelvin"
+
 module WeatherData
-  class Temperature
-    CELSIUS    = :C
-    FAHRENHEIT = :F
-    KELVIN     = :K
+  module Temperature
 
-    def initialize(degrees, units = CELSIUS)
-      @degrees = degrees
-      @units   = units
-    end
-
-    def to_celsius
-    end
-
-    def to_fahrenheit
-    end
-
-    def to_kelvin
-    end
   end
 end
