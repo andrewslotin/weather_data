@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 module WeatherData
   module Temperature
     class Fahrenheit < Base
