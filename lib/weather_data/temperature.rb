@@ -7,11 +7,13 @@ require "weather_data/temperature/kelvin"
 
 module WeatherData
   module Temperature
+    extend self
+
     CELSIUS    = :C
     FAHRENHEIT = :F
     KELVIN     = :K
 
-    def self.parse(s)
+    def parse(s)
       degrees, units = s.match(/\A\s*([+-]?\d+(?:\.\d+)?)\s*(°?#{CELSIUS}|°?#{FAHRENHEIT}|#{KELVIN})\b/).to_a[1..2]
 
       raise ArgumentError unless degrees && units
@@ -21,7 +23,7 @@ module WeatherData
 
     private
 
-    def self.units_class(units)
+    def units_class(units)
       case units.gsub(/\A°/, '').to_sym
       when CELSIUS
         Celsius

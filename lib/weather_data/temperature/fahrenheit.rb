@@ -14,6 +14,13 @@ module WeatherData
       def to_kelvin
         to_celsius.to_kelvin
       end
+
+      private
+
+      def to_self(value)
+        raise ArgumentError unless value.respond_to? :to_fahrenheit
+        value.to_fahrenheit
+      end
     end
   end
 end

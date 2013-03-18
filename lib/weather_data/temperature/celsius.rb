@@ -14,6 +14,13 @@ module WeatherData
       def to_kelvin
         Kelvin.new(degrees + 273.15)
       end
+
+      private
+
+      def to_self(value)
+        raise ArgumentError unless value.respond_to? :to_celsius
+        value.to_celsius
+      end
     end
   end
 end
