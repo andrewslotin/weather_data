@@ -21,29 +21,18 @@ module WeatherData
       units_class(units).new(degrees.to_f)
     end
 
-    module NumericMethods
-      class Degree
-        def initialize(deg)
-          @degrees = deg
-        end
-
-        def celsius
-          Celsius.new(@degrees)
-        end
-
-        def fahrenheit
-          Fahrenheit.new(@degrees)
-        end
-
-        def kelvin
-          Kelvin.new(@degrees)
-        end
+    module HelperMethods
+      def celsius
+        Celsius.new(self)
       end
 
-      def degree
-        Degree.new(self)
+      def fahrenheit
+        Fahrenheit.new(self)
       end
-      alias_method :degrees, :degree
+
+      def kelvin
+        Kelvin.new(self)
+      end
     end
 
     private
@@ -63,4 +52,4 @@ module WeatherData
   end
 end
 
-Numeric.send :include, WeatherData::Temperature::NumericMethods
+[Integer, Float].each { |klass| klass.send :include, WeatherData::Temperature::HelperMethods }
