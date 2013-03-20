@@ -3,40 +3,21 @@
 require 'spec_helper'
 
 describe WeatherData::Temperature do
-  describe "extends Integer" do
-    let(:number) { Integer(0) }
+  [0, 0.0].each do |number|
+    describe "extends #{number.class}" do
+      {
+        :celsius    => WeatherData::Temperature::Celsius,
+        :fahrenheit => WeatherData::Temperature::Fahrenheit,
+        :kelvin     => WeatherData::Temperature::Kelvin
+      }.each do |method_name, klass|
+        it "adds #{method_name}" do
+          expect(number).to respond_to(method_name)
+        end
 
-    {
-      :celsius    => WeatherData::Temperature::Celsius,
-      :fahrenheit => WeatherData::Temperature::Fahrenheit,
-      :kelvin     => WeatherData::Temperature::Kelvin
-    }.each do |method_name, klass|
-      it "adds #{method_name}" do
-        expect(number).to respond_to(method_name)
-      end
-
-      it "#{method_name} returns an instance of #{klass.name}" do
-        expect(number.send(method_name)).to be_kind_of(klass)
-        expect(number.send(method_name).degrees).to eq(number)
-      end
-    end
-  end
-
-  describe "extends Float" do
-    let(:number) { Float(0) }
-
-    {
-      :celsius    => WeatherData::Temperature::Celsius,
-      :fahrenheit => WeatherData::Temperature::Fahrenheit,
-      :kelvin     => WeatherData::Temperature::Kelvin
-    }.each do |method_name, klass|
-      it "adds #{method_name}" do
-        expect(number).to respond_to(method_name)
-      end
-
-      it "#{method_name} returns an instance of #{klass.name}" do
-        expect(number.send(method_name)).to be_kind_of(klass)
-        expect(number.send(method_name).degrees).to eq(number)
+        it "#{method_name} returns an instance of #{klass.name}" do
+          expect(number.send(method_name)).to be_kind_of(klass)
+          expect(number.send(method_name).degrees).to eq(number)
+        end
       end
     end
   end
