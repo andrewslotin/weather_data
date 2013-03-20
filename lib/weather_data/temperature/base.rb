@@ -3,11 +3,13 @@
 module WeatherData
   module Temperature
     class Base
+      include Comparable
+
       attr_accessor :degrees
 
       def initialize(deg)
         @degrees = if deg.is_a? Numeric
-          deg.to_f
+          deg
         else
           to_self(deg).degrees
         end
@@ -21,8 +23,16 @@ module WeatherData
         end
       end
 
+      def degrees
+        @degrees.to_f
+      end
+
       def -@
         self.class.new(-degrees)
+      end
+
+      def <=>(value)
+        degrees <=> to_self(value).degrees
       end
 
       def +(value)
