@@ -7,9 +7,9 @@ describe WeatherData::Temperature do
     let(:number) { Integer(0) }
 
     {
-      celsius:    WeatherData::Temperature::Celsius,
-      fahrenheit: WeatherData::Temperature::Fahrenheit,
-      kelvin:     WeatherData::Temperature::Kelvin
+      :celsius    => WeatherData::Temperature::Celsius,
+      :fahrenheit => WeatherData::Temperature::Fahrenheit,
+      :kelvin     => WeatherData::Temperature::Kelvin
     }.each do |method_name, klass|
       it "adds #{method_name}" do
         expect(number).to respond_to(method_name)
@@ -25,9 +25,9 @@ describe WeatherData::Temperature do
     let(:number) { Float(0) }
 
     {
-      celsius:    WeatherData::Temperature::Celsius,
-      fahrenheit: WeatherData::Temperature::Fahrenheit,
-      kelvin:     WeatherData::Temperature::Kelvin
+      :celsius    => WeatherData::Temperature::Celsius,
+      :fahrenheit => WeatherData::Temperature::Fahrenheit,
+      :kelvin     => WeatherData::Temperature::Kelvin
     }.each do |method_name, klass|
       it "adds #{method_name}" do
         expect(number).to respond_to(method_name)
