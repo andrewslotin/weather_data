@@ -14,7 +14,7 @@ module WeatherData
     KELVIN     = :K
 
     def parse(s)
-      degrees, units = s.match(/\A\s*([+-]?\d+(?:\.\d+)?)\s*(°?#{CELSIUS}|°?#{FAHRENHEIT}|#{KELVIN})\b/).to_a[1..2]
+      degrees, units = s.match(/\A\s*([+-]?\d+(?:\.\d+)?)\s*(°?#{CELSIUS}|°?#{FAHRENHEIT}|#{KELVIN})\b/u).to_a[1..2]
 
       raise ArgumentError unless degrees && units
 
