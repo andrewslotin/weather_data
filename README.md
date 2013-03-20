@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/andrewslotin/weather_data.png)](https://travis-ci.org/andrewslotin/weather_data.png)
+
 # WeatherData
 
 TODO: Write a gem description
