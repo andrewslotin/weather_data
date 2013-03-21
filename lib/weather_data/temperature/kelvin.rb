@@ -21,6 +21,10 @@ module WeatherData
         self
       end
 
+      def to_s
+        "#{degrees}"
+      end
+
       private
 
       def to_self(value)

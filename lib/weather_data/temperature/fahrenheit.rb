@@ -15,6 +15,10 @@ module WeatherData
         to_celsius.to_kelvin
       end
 
+      def to_s
+        "#{degrees}°F"
+      end
+
       private
 
       def to_self(value)
