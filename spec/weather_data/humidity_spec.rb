@@ -5,7 +5,7 @@ require 'spec_helper'
 describe WeatherData::Humidity do
   describe ".parse" do
     it "returns an initialized instance of WeatherData::RelativeHumidity" do
-      h = described_class.parse("80%")
+      h = described_class.parse("Humidity: 80%")
 
       expect(h).to be_kind_of WeatherData::Humidity::Relative
       expect(h).to eq 80

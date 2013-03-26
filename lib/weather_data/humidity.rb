@@ -5,7 +5,7 @@ require "weather_data/humidity/relative"
 module WeatherData
   module Humidity
     def self.parse(s)
-      percents = s[/\A(\d+)%\B/, 1]
+      percents = s[/\b(\d+)%\B/, 1]
 
       raise ArgumentError unless percents && percents.to_f >= 0.0
 
