@@ -25,7 +25,7 @@ describe WeatherData::Temperature do
   describe "#parse" do
     it "parses temperature in Celsius" do
       [15.2, -15.2].each do |deg|
-        ["#{deg} °C", "#{deg}°C", "#{deg}C", "#{deg} C"].each do |s|
+        ["#{deg} °C", "#{deg}°C", "#{deg}C", "#{deg} C", "Temperature: #{deg}°C"].each do |s|
           t = subject.parse(s)
           expect(t).to be_kind_of WeatherData::Temperature::Celsius
           expect(t).to eq deg
@@ -35,7 +35,7 @@ describe WeatherData::Temperature do
 
     it "parses temperature in Fahrenheit" do
       [15.2, -15.2].each do |deg|
-        ["#{deg} °F", "#{deg}°F", "#{deg}F", "#{deg} F"].each do |s|
+        ["#{deg} °F", "#{deg}°F", "#{deg}F", "#{deg} F", "Temperature: #{deg}°F"].each do |s|
           t = subject.parse(s)
           expect(t).to be_kind_of WeatherData::Temperature::Fahrenheit
           expect(t).to eq deg
