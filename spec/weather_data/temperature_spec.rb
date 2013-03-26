@@ -15,8 +15,8 @@ describe WeatherData::Temperature do
         end
 
         it "#{method_name} returns an instance of #{klass.name}" do
-          expect(number.send(method_name)).to be_kind_of(klass)
-          expect(number.send(method_name).degrees).to eq(number)
+          expect(number.send(method_name)).to be_kind_of klass
+          expect(number.send(method_name).degrees).to eq number
         end
       end
     end
