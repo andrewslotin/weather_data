@@ -34,4 +34,24 @@ describe WeatherData::Weather do
       expect(subject.humindex.to_celsius.degrees.round).to eq 34
     end
   end
+
+  describe "#vapour_pressure" do
+    it "returns vapour pressure in hPa for given conditions" do
+      expect(subject.vapour_pressure.round).to eq (42 * subject.humidity / 100.0).round
+    end
+  end
+
+  describe "#apparent_temperature" do
+    before do
+      subject.stub(
+        :temperature => WeatherData::Temperature::Celsius.new(18),
+        :humidity    => WeatherData::Humidity::Relative.new(70),
+        :wind        => WeatherData::Wind.new(10, "km/h")
+      )
+    end
+
+    it "returns Australian apparent temperature for given conditions" do
+      expect(subject.apparent_temperature.to_celsius.degrees.round).to eq 17
+    end
+  end
 end
