@@ -6,8 +6,7 @@ module WeatherData
   class Wind < ::SimpleDelegator
     ATTRIBUTES = [
       :direction,
-      :speed,
-      :units
+      :speed
     ].freeze
 
     CARDINAL_DIRECTIONS = {
@@ -53,6 +52,10 @@ module WeatherData
 
     def speed=(value)
       __setobj__(value)
+    end
+
+    def units
+      'm/s'
     end
 
     def to_kmh
