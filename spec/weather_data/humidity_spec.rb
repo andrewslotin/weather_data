@@ -11,15 +11,21 @@ describe WeatherData::Humidity do
       expect(h).to eq 80
     end
 
-    context "if the humidity is not in percents" do
-      it "multiplies the value by 100" do
-        expect(described_class.parse("Humidity: 0.80")).to eq 80
-      end
-    end
-
     context "if given string does not contain humidity" do
       it "raises ArgumentError" do
         expect { described_class.parse("string") }.to raise_error ArgumentError
+      end
+    end
+
+    context "if given value 0% or less" do
+      it "raises ArgumentError" do
+        expect { described_class.parse("0%") }.to raise_error ArgumentError
+      end
+    end
+
+    context "if given value greater than 100%" do
+      it "raises ArgumentError" do
+        expect { described_class.parse("101%") }.to raise_error ArgumentError
       end
     end
   end

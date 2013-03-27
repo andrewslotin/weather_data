@@ -5,12 +5,14 @@ require "weather_data/humidity/relative"
 module WeatherData
   module Humidity
     def self.parse(s)
-      _, points, units = /\b(\d+(?:\.\d+)?)(%)?\B/.match(s).to_a
+      _, points, units = /\b(\d+(?:\.\d+)?)%/.match(s).to_a
 
-      raise ArgumentError.new("#{s.inspect} doesn't contain humidity") unless points && points.to_f > 0.0
-      points = points.to_f * 100.0 unless units == '%'
+      raise ArgumentError.new(%Q{"#{s.inspect}" doesn't contain humidity}) unless points
 
-      Relative.new(points.to_f)
+      percents = points.to_f
+      raise ArgumentError.new("Invalid value for relative humidity: #{percents.inspect}") unless percents > 0 && percents <= 100
+
+      Relative.new(percents)
     end
   end
 end
