@@ -37,7 +37,7 @@ describe WeatherData::Weather do
 
   describe "#vapour_pressure" do
     it "returns vapour pressure in hPa for given conditions" do
-      expect(subject.vapour_pressure.round).to eq (42 * subject.humidity / 100.0).round
+      expect(subject.vapour_pressure.round).to eq ((42 * subject.humidity / 100.0).round)
     end
   end
 
