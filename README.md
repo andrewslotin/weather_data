@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/andrewslotin/weather_data.png)](https://travis-ci.org/andrewslotin/weather_data.png)
+[![Build Status](https://travis-ci.org/andrewslotin/weather_data.png)](https://travis-ci.org/andrewslotin/weather_data)
 
 # WeatherData
 
