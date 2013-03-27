@@ -5,6 +5,10 @@ require 'delegate'
 module WeatherData
   module Humidity
     class Relative < ::SimpleDelegator
+      def initialize(points)
+        super points.to_f
+      end
+
       def to_s
         "#{percentage}%"
       end
