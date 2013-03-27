@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe WeatherData::Weather do
-  subject { described_class.new(temperature: "+30C", humidity: "60%") }
+  subject { described_class.new(:temperature => "+30C", :humidity => "60%") }
 
   describe ".parse" do
     it "returns an instance of WeatherData::Weather" do
